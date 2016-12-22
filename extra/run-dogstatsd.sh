@@ -19,6 +19,10 @@ else
   exit 1
 fi
 
+if [[ $$HISTOGRAM_PERCENTILES ]]; then
+  sed -i -e "s/^.*histogram_precentiles:.*$/histogram_precentiles: ${HISTOGRAM_PERCENTILES}/" /app/.apt/opt/datadog-agent/agent/datadog.conf
+fi
+
 (
   # Unset other PYTHONPATH/PYTHONHOME variables before we start
   unset PYTHONHOME PYTHONPATH
